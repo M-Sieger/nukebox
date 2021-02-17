@@ -7,12 +7,12 @@ type Props = {
   imgSrc: string;
 };
 
-export default function TrackItem(props: Props) {
+export default function TrackItem({ imgSrc, title, artist }: Props) {
   return (
-    <div>
-      <img className={styles.cover}>{props.imgSrc}</img>
-      <h4 className={styles.artist}>{props.artist}</h4>
-      <p className={styles.title}>{props.title}</p>
-    </div>
+    <li className={styles.trackItem}>
+      <img className={styles.img} src={imgSrc} alt="" />
+      <div className={styles.title}>{title}</div>
+      <div className={styles.artist}>{artist}</div>
+    </li>
   );
 }
