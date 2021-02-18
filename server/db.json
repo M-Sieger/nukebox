@@ -1,16 +1,22 @@
 {
   "tracks": [
     {
-      "id": "scooter_paul-is-dead",
-      "imgSrc": "https://images.unsplash.com/photo-1613473060226-dd81153a63db?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      "title": "Paul is Dead",
-      "artist": "Scooter"
+      "id": "2Pac_Dear-Mama",
+      "imgSrc": "https://64.media.tumblr.com/e86501a20d8309b6b35661831b77fd3c/tumblr_os6iectNbo1wpmw2uo1_540.jpg",
+      "title": "Dear Mama",
+      "artist": "2Pac"
     },
     {
-      "id": "metallica_the-unforgiven",
-      "imgSrc": "https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a?ixid=MXwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      "title": "The Unforgiven",
-      "artist": "Metallica"
+      "id": "Drake_Hotline-Bling",
+      "imgSrc": "https://s-media-cache-ak0.pinimg.com/564x/b6/14/76/b6147642f9745ca943ef0788df2264cc.jpg",
+      "title": "Hotline BLing",
+      "artist": "Drake"
+    },
+    {
+      "id": "BIG_Hypnotized",
+      "imgSrc": "https://th.bing.com/th/id/R9e80e8faa069012e799acdd9da743972?rik=dTpatUa%2fzowEqQ&riu=http%3a%2f%2fwallpapers-best.com%2fuploads%2fposts%2f2015-11%2f15_notorious_big.jpg&ehk=4g8hKIyk8atUbnP8o3vXfvBSw1po5ee7pFSfpkVyWDY%3d&risl=&pid=ImgRaw",
+      "title": "Hypnotized",
+      "artist": "B.I.G."
     }
   ]
 }
