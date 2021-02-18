@@ -11,14 +11,12 @@ export default function Home() {
       title: "2Pac",
       artist: "Test",
     },
-
     {
       imgSrc:
         "https://s-media-cache-ak0.pinimg.com/564x/b6/14/76/b6147642f9745ca943ef0788df2264cc.jpg",
       title: "Drake",
       artist: "Test",
     },
-
     {
       imgSrc:
         "https://th.bing.com/th/id/R9e80e8faa069012e799acdd9da743972?rik=dTpatUa%2fzowEqQ&riu=http%3a%2f%2fwallpapers-best.com%2fuploads%2fposts%2f2015-11%2f15_notorious_big.jpg&ehk=4g8hKIyk8atUbnP8o3vXfvBSw1po5ee7pFSfpkVyWDY%3d&risl=&pid=ImgRaw",
