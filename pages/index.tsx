@@ -38,3 +38,12 @@ export default function Home() {
     </div>
   );
 }
+// return (
+//   <div className={styles.container}>
+//     <Head>
+//       <title>nukebox</title>
+//       <link rel="icon" href="/favicon.ico" />
+//     </Head>
+//     <Greeting name="Jan" />
+//     <ul className={styles.list}>{trackItems}</ul>
+//   </div>
