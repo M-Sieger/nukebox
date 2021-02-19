@@ -1,11 +1,14 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { APITrack, getTrack } from "../../utils/api";
+import { Player } from "../../components/player";
+import TrackDetails from "../../components/trackDetails";
+import { HeadNavigation } from "../../components/HeadNavigation";
 
 export default function Track() {
+  const [track, setTrack] = useState<APITrack>(null);
   const router = useRouter();
   const { id } = router.query;
-  const [track, setTrack] = useState<APITrack>(null);
 
   useEffect(() => {
     //todo get track by `id`
@@ -19,12 +22,14 @@ export default function Track() {
   }
 
   return (
-    <ul className="track-page">
-      <div>
-        Title: {track.title}
-        Artist: {track.artist}
-      </div>
-      <img src={track.imgSrc} />
-    </ul>
+    <div>
+      <HeadNavigation />
+      <TrackDetails
+        title={track.title}
+        artist={track.artist}
+        imgSrc={track.imgSrc}
+      />
+      <Player fileUrl={track.fileUrl} />
+    </div>
   );
 }

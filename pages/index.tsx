@@ -5,9 +5,12 @@ import TrackItem from "../components/track-list";
 import { useEffect, useState } from "react";
 import { APITrack, getTracks } from "../utils/api";
 import Link from "next/link";
+// import React from "react";
+// import { useHistory } from"react-router-dom";
 
 export default function Home() {
   const [tracks, setTracks] = useState<APITrack[]>([]);
+
   useEffect(() => {
     console.log("Mounted");
     getTracks().then((newTracks) => {
@@ -38,12 +41,3 @@ export default function Home() {
     </div>
   );
 }
-// return (
-//   <div className={styles.container}>
-//     <Head>
-//       <title>nukebox</title>
-//       <link rel="icon" href="/favicon.ico" />
-//     </Head>
-//     <Greeting name="Jan" />
-//     <ul className={styles.list}>{trackItems}</ul>
-//   </div>
