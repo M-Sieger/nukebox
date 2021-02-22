@@ -3,10 +3,13 @@
   width: 35%;
   height: 75%;
   margin-top: 20px;
-  border: 1px solid green;
 }
-.trackItem {
+.trackDetails {
   padding: 100px;
-  border: 1px solid green;
   display: grid;
+  justify-content: center;
+}
+
+.trackDetails_img {
+  border-radius: 10px;
 }
