@@ -22,7 +22,7 @@ export default function Track() {
   }
 
   return (
-    <div>
+    <>
       <HeadNavigation />
       <TrackDetails
         title={track.title}
@@ -30,6 +30,6 @@ export default function Track() {
         imgSrc={track.imgSrc}
       />
       <Player fileUrl={track.fileUrl} />
-    </div>
+    </>
   );
 }

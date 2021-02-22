@@ -2,5 +2,9 @@ import { useRouter } from "next/router";
 
 export function Navigatiion() {
   const router = useRouter();
-  return <div onClick={() => router.back()}>Back to List</div>;
+  return (
+    <div className="Nav" onClick={() => router.back()}>
+      back to List
+    </div>
+  );
 }

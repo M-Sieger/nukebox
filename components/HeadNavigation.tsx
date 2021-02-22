@@ -1,4 +1,3 @@
-// import styles from "../styles/HeadNavigation.module.css";
 import { useRouter } from "next/router";
 
 export function HeadNavigation() {
