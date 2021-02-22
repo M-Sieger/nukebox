@@ -1,0 +1,12 @@
+.img {
+  border-radius: 10px;
+  width: 35%;
+  height: 75%;
+  margin-top: 20px;
+  border: 1px solid green;
+}
+.trackItem {
+  padding: 100px;
+  border: 1px solid green;
+  display: grid;
+}
