@@ -1,7 +1,3 @@
-// type AudioDingens = {
-//   fileUrl: string;
-// };
-
 import { useEffect, useRef, useState } from "react";
 import styles from "../styles/AudioPlayer.module.css";
 
@@ -24,7 +20,7 @@ export default function AudioPlayer({ src }: Props) {
 
   return (
     <button className={styles.btn} onClick={() => setIsPlaying(!isPlaying)}>
-      <img src={isPlaying ? "/pause.svg" : "play.svg"} />
+      <img src={isPlaying ? "/pause.svg" : "/play.svg"} />
     </button>
   );
 }

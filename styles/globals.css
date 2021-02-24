@@ -22,3 +22,8 @@ a {
 * {
   box-sizing: border-box;
 }
+
+footer {
+  display: grid;
+  align-items: flex-end;
+}
