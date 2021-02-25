@@ -1,35 +1,62 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { APITrack, getTrack } from "../../utils/api";
-import { Player } from "../../components/player";
-import TrackDetails from "../../components/trackDetails";
-import { HeadNavigation } from "../../components/HeadNavigation";
+import useLocalStorage from "../../hooks/useLocalStorage";
+import AudioPlayer from "../../components/AudioPlayer";
+import TrackDetails from "../../components/TrackDetails";
+import { APITrack, deleteTrack, getTrack } from "../../utils/api";
 
 export default function Track() {
-  const [track, setTrack] = useState<APITrack>(null);
   const router = useRouter();
-  const { id } = router.query;
+  const { id: idQuery } = router.query;
+  if (!idQuery) {
+    return null;
+  }
+  const id = typeof idQuery !== "string" ? idQuery[0] : idQuery;
+  const [track, setTrack] = useState<APITrack>(null);
+  const [favoriteTrackIds, setFavoriteTrackIds] = useLocalStorage<string[]>(
+    "favoriteTracks",
+    []
+  );
+  const isFavorite = favoriteTrackIds.includes(id);
 
   useEffect(() => {
-    //todo get track by `id`
-    getTrack(id).then((newTrack) => {
-      setTrack(newTrack);
-    });
+    getTrack(id).then((newTrack) => setTrack(newTrack));
   }, [id]);
+
+  const handleFavoriteClick = () => {
+    if (isFavorite) {
+      const newFavoriteTracks = favoriteTrackIds.filter(
+        (favoritTrack) => favoritTrack !== id
+      );
+      setFavoriteTrackIds(newFavoriteTracks);
+    } else {
+      setFavoriteTrackIds([...favoriteTrackIds, id]);
+    }
+  };
+
+  const handleDeleteClick = async () => {
+    await deleteTrack(track.id);
+    router.back();
+  };
 
   if (!track) {
     return <div>Loading...</div>;
   }
 
   return (
-    <>
-      <HeadNavigation />
-      <TrackDetails
-        title={track.title}
-        artist={track.artist}
-        imgSrc={track.imgSrc}
-      />
-      <Player fileUrl={track.fileUrl} />
-    </>
+    <div>
+      <main>
+        <TrackDetails
+          imgSrc={track.imgSrc}
+          title={track.title}
+          artist={track.artist}
+        />
+      </main>
+      <button onClick={handleFavoriteClick}>{isFavorite ? "💘" : "🖤"}</button>
+      <button onClick={handleDeleteClick}>🗑</button>
+      <footer>
+        <AudioPlayer src={track.audioSrc} />
+      </footer>
+    </div>
   );
 }
