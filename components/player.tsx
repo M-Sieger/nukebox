@@ -1,13 +1,26 @@
-import styles from "../styles/audioplayer.module.css";
+import { useEffect, useRef, useState } from "react";
+import styles from "../styles/AudioPlayer.module.css";
 
-type AudioDingens = {
-  fileUrl: string;
+type Props = {
+  src: string;
 };
+export default function AudioPlayer({ src }: Props) {
+  const audioRef = useRef(new Audio(src));
+  const [isPlaying, setIsPlaying] = useState(false);
 
-export function Player(props: AudioDingens) {
+  const audioElement = audioRef.current;
+
+  useEffect(() => {
+    if (isPlaying) {
+      audioElement.play();
+    } else {
+      audioElement.pause();
+    }
+  }, [isPlaying]);
+
   return (
-    <div className="player">
-      <audio controls src={props.fileUrl}></audio>
-    </div>
+    <button className={styles.btn} onClick={() => setIsPlaying(!isPlaying)}>
+      <img src={isPlaying ? "/pause.svg" : "/play.svg"} />
+    </button>
   );
 }

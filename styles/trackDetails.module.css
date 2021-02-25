@@ -1,15 +1,35 @@
-.img {
-  border-radius: 10px;
-  width: 35%;
-  height: 75%;
-  margin-top: 20px;
-}
 .trackDetails {
-  padding: 100px;
+  list-style: none;
   display: grid;
-  justify-content: center;
+  grid-template: 1.6em 1.6em / 3.2em 1fr;
+  grid-template-areas:
+    "img title"
+    "img artist";
+  grid-column-gap: 15px;
+  align-items: center;
 }
 
-.trackDetails_img {
+.detimg {
+  grid-area: img;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 10px;
+}
+
+.dettitle {
+  grid-area: title;
+}
+
+.detartist {
+  grid-area: artist;
+  color: var(--secondary-text);
+}
+
+.trackItem .dettitle {
+  align-self: end;
+}
+
+.trackItem .detartist {
+  align-self: start;
 }
