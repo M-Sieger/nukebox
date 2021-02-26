@@ -1,12 +1,10 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Greeting from "../components/greetings";
-import TrackItem from "../components/track-list";
+import TrackItem from "../components/TrackItem";
 import { useEffect, useState } from "react";
 import { APITrack, getTracks } from "../utils/api";
 import Link from "next/link";
-// import React from "react";
-// import { useHistory } from"react-router-dom";
 
 export default function Home() {
   const [tracks, setTracks] = useState<APITrack[]>([]);

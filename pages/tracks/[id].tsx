@@ -1,10 +1,9 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import useLocalStorage from "../../hooks/useLocalStorage";
-import { APITrack, getTrack } from "../../utils/api";
-import AudioPlayer from "../../components/player";
-import TrackDetails from "../../components/trackDetails";
-import { HeadNavigation } from "../../components/HeadNavigation";
+import AudioPlayer from "../../components/AudioPlayer";
+import TrackDetails from "../../components/TrackDetails";
+import { APITrack, deleteTrack, getTrack } from "../../utils/api";
 
 export default function Track() {
   const router = useRouter();
@@ -12,31 +11,32 @@ export default function Track() {
   if (!idQuery) {
     return null;
   }
-  const id = typeof idQuery === "string" ? idQuery : idQuery[0];
-
+  const id = typeof idQuery !== "string" ? idQuery[0] : idQuery;
   const [track, setTrack] = useState<APITrack>(null);
-  const [favoriteSongs, setFavoriteSongs] = useLocalStorage<string[]>(
-    "favoriteSongs",
+  const [favoriteTrackIds, setFavoriteTrackIds] = useLocalStorage<string[]>(
+    "favoriteTracks",
     []
   );
-  const favorite = favoriteSongs.includes(id);
+  const isFavorite = favoriteTrackIds.includes(id);
 
   useEffect(() => {
-    //todo get track by `id`
-    getTrack(id).then((newTrack) => {
-      setTrack(newTrack);
-    });
+    getTrack(id).then((newTrack) => setTrack(newTrack));
   }, [id]);
 
   const handleFavoriteClick = () => {
-    if (favorite) {
-      const newFavoriteSongs = favoriteSongs.filter(
-        (favoriteSong) => favoriteSong !== id
+    if (isFavorite) {
+      const newFavoriteTracks = favoriteTrackIds.filter(
+        (favoritTrack) => favoritTrack !== id
       );
-      setFavoriteSongs(newFavoriteSongs);
+      setFavoriteTrackIds(newFavoriteTracks);
     } else {
-      setFavoriteSongs([...favoriteSongs, id]);
+      setFavoriteTrackIds([...favoriteTrackIds, id]);
     }
+  };
+
+  const handleDeleteClick = async () => {
+    await deleteTrack(track.id);
+    router.back();
   };
 
   if (!track) {
@@ -44,21 +44,19 @@ export default function Track() {
   }
 
   return (
-    <>
-      <header>
-        <HeadNavigation />
-      </header>
+    <div>
       <main>
         <TrackDetails
+          imgSrc={track.imgSrc}
           title={track.title}
           artist={track.artist}
-          imgSrc={track.imgSrc}
         />
       </main>
-      <button onClick={handleFavoriteClick}>{favorite ? "💘" : "🖤"}</button>
+      <button onClick={handleFavoriteClick}>{isFavorite ? "💘" : "🖤"}</button>
+      <button onClick={handleDeleteClick}>🗑</button>
       <footer>
         <AudioPlayer src={track.audioSrc} />
       </footer>
-    </>
+    </div>
   );
 }

@@ -14,14 +14,14 @@ export default function useLocalStorage<T>(
     }
   };
 
-  const writeLocalStorage = (value: T) => {
+  const writeToLocalStorage = (value: T) => {
     localStorage.setItem(key, JSON.stringify(value));
   };
 
   const [storedValue, setStoredValue] = useState<T>(readFromLocalStorage);
 
   const setValue = (value: T) => {
-    writeLocalStorage(value);
+    writeToLocalStorage(value);
     setStoredValue(value);
   };
 

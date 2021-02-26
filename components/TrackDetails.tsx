@@ -1,9 +1,9 @@
-import styles from "../styles/trackDetails.module.css";
+import styles from "../styles/TrackDetails.module.css";
 
 type Props = {
+  imgSrc: string;
   title: string;
   artist: string;
-  imgSrc: string;
 };
 export default function TrackDetails({ imgSrc, title, artist }: Props) {
   return (

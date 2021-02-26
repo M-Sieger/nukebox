@@ -1,0 +1,27 @@
+### GET HTML of index page
+GET http://localhost:3000
+
+### GET HTML of track page
+GET http://localhost:3000/tracks/Drake_Hotline-Bling
+
+### GET all tracks
+GET http://localhost:3000/api/tracks
+
+### GET a single track
+GET http://localhost:3000/api/tracks/Drake_Hotline-Bling
+
+### DELETE a single track
+DELETE http://localhost:3000/api/tracks/Drake_Hotline-Bling 
+
+POST http://localhost:3000/api/tracks/Drake_Hotline-Bling 
+Content-Type: application/json
+
+{
+      "id": "Drake_Hotline-Bling",
+      "imgSrc": "https://s-media-cache-ak0.pinimg.com/564x/b6/14/76/b6147642f9745ca943ef0788df2264cc.jpg",
+      "title": "Hotline BLing",
+      "artist": "Drake",
+      "fileUrl": "/NewWave.mp3"
+    }
+
+
