@@ -1,12 +1,10 @@
-// import styles from "../styles/Greeting.module.css";
-import styles from "../styles/track_item.module.css";
+import styles from "../styles/TrackItem.module.css";
 
 type Props = {
+  imgSrc: string;
   title: string;
   artist: string;
-  imgSrc: string;
 };
-
 export default function TrackItem({ imgSrc, title, artist }: Props) {
   return (
     <li className={styles.trackItem}>
