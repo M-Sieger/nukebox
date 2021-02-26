@@ -35,6 +35,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Greeting name="Jan" />
+      <Link href={`/addTrack`}>
+        <a>
+          <button>+Track</button>
+        </a>
+      </Link>
       <ul className={styles.list}>{trackItems}</ul>
     </div>
   );
